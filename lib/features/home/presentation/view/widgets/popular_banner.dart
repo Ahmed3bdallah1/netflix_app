@@ -25,51 +25,45 @@ class PopularBanner extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(color: Colors.white54)),
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        CachedNetworkImage(
-                          fit: BoxFit.fill,
-                          imageUrl:
-                              "${ApiConstants.coverImageUrl}${e.backdropPath}",
-                          progressIndicatorBuilder:
-                              (context, url, downloadProgress) => const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        imageUrl:
+                            "${ApiConstants.coverImageUrl}${e.backdropPath}",
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => const Center(
+                          child: CircularProgressIndicator(),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Container(
-                              alignment: Alignment.center,
-                              width: 200,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  color: const Color(0x4DDADADA),
-                                  border: Border.all(
-                                    color: const Color(0x40FFFFFF),
-                                  ),
-                                  borderRadius: const BorderRadius.horizontal(
-                                      left: Radius.circular(20),
-                                      right: Radius.circular(20))),
-                              child: Text(
-                                e.title,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFFFFFFF),
-                                  letterSpacing: 0.32,
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Container(
+                            alignment: Alignment.center,
+                            width: 200,
+                            height: 60,
+                            decoration: BoxDecoration(
+                                color: const Color(0x4DDADADA),
+                                border: Border.all(
+                                  color: const Color(0x40FFFFFF),
                                 ),
-                              )),
-                        )
-                      ],
-                    ),
+                                borderRadius: const BorderRadius.horizontal(
+                                    left: Radius.circular(20),
+                                    right: Radius.circular(20))),
+                            child: Text(
+                              e.title,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFFFFFFF),
+                                letterSpacing: 0.32,
+                              ),
+                            )),
+                      )
+                    ],
                   ),
                 ),
               ),

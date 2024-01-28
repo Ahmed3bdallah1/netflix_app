@@ -1,6 +1,8 @@
+import 'package:movies_app/Models/saved/saved_model.dart';
+
 class SimilarModel {
   num? page;
-  List<SimilarResult>? results;
+  List<Result>? results;
   num? totalPages;
   num? totalResults;
 
@@ -9,9 +11,9 @@ class SimilarModel {
   SimilarModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     if (json['results'] != null) {
-      results = <SimilarResult>[];
+      results = <Result>[];
       json['results'].forEach((v) {
-        results!.add(SimilarResult.fromJson(v));
+        results!.add(Result.fromJson(v));
       });
     }
     totalPages = json['total_pages'];

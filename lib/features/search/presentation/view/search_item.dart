@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/Models/saved/saved_model.dart';
 import 'package:movies_app/Models/search/search_model.dart';
+import 'package:movies_app/core/utils/custom_snak_bar.dart';
 import 'package:movies_app/features/details/presentation/view/details_screen.dart';
 import 'package:movies_app/features/saved/presentation/managers/save_cubit.dart';
 import 'package:movies_app/features/saved/presentation/managers/save_state.dart';
@@ -22,7 +23,7 @@ class SearchItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (_) => DetailsScreen(id: searchResult.id)));
+                builder: (_) => DetailsScreen(id: searchResult.id ?? 0)));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -70,7 +71,7 @@ class SearchItem extends StatelessWidget {
                               listener: (context, state) {},
                               builder: (context, state) {
                                 return cubit.isResultSaved(
-                                            resultId: searchResult.id) ==
+                                            resultId: searchResult.id ?? 0) ==
                                         true
                                     ? IconButton(
                                         onPressed: () {},
@@ -82,6 +83,8 @@ class SearchItem extends StatelessWidget {
                                       )
                                     : IconButton(
                                         onPressed: () {
+                                          showSnakBar(context,
+                                              "${searchResult.title} added to the saved screen");
                                           cubit.toSave(result: searchResult);
                                         },
                                         icon: const Icon(
@@ -95,7 +98,7 @@ class SearchItem extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
-                        child: Text(searchResult.title,
+                        child: Text(searchResult.title ?? "Unknown",
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                             maxLines: 2,

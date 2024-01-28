@@ -1,8 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/Models/saved/saved_model.dart';
 import 'package:movies_app/core/api_constants.dart';
+import 'package:movies_app/core/utils/custom_snak_bar.dart';
 import 'package:movies_app/features/details/presentation/view/details_screen.dart';
+import 'package:movies_app/features/saved/presentation/managers/save_cubit.dart';
+import 'package:movies_app/features/saved/presentation/managers/save_state.dart';
 
 class TopRatedItem extends StatelessWidget {
   final Result topRatedResult;
@@ -16,7 +20,7 @@ class TopRatedItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (_) => DetailsScreen(id:topRatedResult.id)));
+                builder: (_) => DetailsScreen(id: topRatedResult.id ?? 0)));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -60,19 +64,39 @@ class TopRatedItem extends StatelessWidget {
                           Positioned(
                             top: -10,
                             right: 5,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.bookmark_add,
-                                size: 50,
-                              ),
+                            child: BlocConsumer<SaveCubit, SaveState>(
+                              listener: (context, state) {},
+                              builder: (context, state) {
+                                SaveCubit cubit = SaveCubit.get(context);
+                                return cubit.isResultSaved(
+                                            resultId: topRatedResult.id ?? 0) ==
+                                        true
+                                    ? IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.bookmark_added_rounded,
+                                          color: Colors.blue,
+                                          size: 50,
+                                        ),
+                                      )
+                                    : IconButton(
+                                        onPressed: () {
+                                          showSnakBar(context,
+                                              "${topRatedResult.title} added to the saved screen");
+                                          cubit.toSave(result: topRatedResult);
+                                        },
+                                        icon: const Icon(
+                                          Icons.bookmark_add,
+                                          size: 50,
+                                        ));
+                              },
                             ),
                           ),
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
-                        child: Text(topRatedResult.title,
+                        child: Text(topRatedResult.title ?? "Unknown",
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                             maxLines: 2,
@@ -94,7 +118,8 @@ class TopRatedItem extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "${topRatedResult.voteAverage}".substring(0, 3),
+                                  "${topRatedResult.voteAverage}"
+                                      .substring(0, 3),
                                   style: const TextStyle(fontSize: 20),
                                 )
                               ],

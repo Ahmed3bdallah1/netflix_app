@@ -29,13 +29,16 @@ class DetailsRepoImp extends DetailsRepo {
     try {
       var response = await DioHelperStore.getData(
           url: "${ApiConstants.baseUrl}/$id/similar?${ApiConstants.apiKey}");
+      print("success");
       SimilarModel similarModel = SimilarModel.fromJson(response.data);
       print(similarModel.results?[0].title);
       return right(similarModel);
     } catch (e) {
       if (e is DioException) {
+        print("server error${e.message}");
         return left(ServerFailure.fromDioError(e));
       }
+      print(e.toString());
       return left(ServerFailure(e.toString()));
     }
   }

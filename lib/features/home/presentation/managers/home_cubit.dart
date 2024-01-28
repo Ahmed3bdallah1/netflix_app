@@ -6,6 +6,7 @@ import 'package:movies_app/Models/home/upcoming_model.dart';
 import 'package:movies_app/Models/saved/saved_model.dart';
 import 'package:movies_app/features/home/data/repos/home_repos_imp.dart';
 import 'package:movies_app/features/home/presentation/view/screens/home_screen.dart';
+import 'package:movies_app/features/saved/presentation/view/saved_screen.dart';
 import 'package:movies_app/features/search/presentation/view/search_screen.dart';
 import 'home_state.dart';
 
@@ -24,12 +25,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Widget> screens = const [
     HomeScreen(),
-    SizedBox(),
+    SavedScreen(),
     SearchScreen(),
     SizedBox(),
-    // SearchTab(),
-    // BrowseTab(),
-    // WatchListTab()
   ];
 
   List<PoplarResult> popList = [];

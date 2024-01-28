@@ -4,8 +4,6 @@ import 'package:movies_app/features/search/presentation/managers/search_cubit.da
 import 'package:movies_app/features/search/presentation/managers/search_state.dart';
 import 'package:movies_app/features/search/presentation/view/search_item.dart';
 
-import '../../../home/presentation/view/widgets/upcoming_item.dart';
-
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
@@ -38,7 +36,7 @@ class SearchScreen extends StatelessWidget {
                                 onTap: (){
                                   searchController.clear();
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.close,
                                   color: Colors.black,
                                 ),
