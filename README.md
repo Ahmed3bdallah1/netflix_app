@@ -1,16 +1,17 @@
 # movies_app
 
-A new Flutter project.
+Netflix clone app.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+⚫ Responsive UI: Delivers an optimal viewing experience across various screen sizes and devices
 
-A few resources to get you started if this is your first Flutter project:
+⚫ State Management: using the BLoC pattern for clean and efficient state management
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+⚫ Design Architecture: using MVVM Design architecture for clean and readable code.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+⚫ Dio: Dio requests to fetch movie data from the TMDB API.
+
+⚫ Interceptor: Added Custom Dio interceptors to watch the request types and the response.
+
+
