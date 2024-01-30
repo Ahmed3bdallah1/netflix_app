@@ -5,6 +5,8 @@ import 'package:movies_app/features/search/presentation/managers/search_cubit.da
 import 'package:movies_app/features/search/presentation/managers/search_state.dart';
 import 'package:movies_app/features/search/presentation/view/search_item.dart';
 
+import '../../../home/presentation/view/screens/see_all_screen.dart';
+
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
@@ -136,16 +138,48 @@ class SearchScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 30),
                     child: Column(
                       children: [
-                        Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(.3),
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Center(
-                            child: Text("Popular now"),
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text("Popular now",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: 0.48,
+                                )),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => SeeAllScreen(
+                                            title: "Popular now",
+                                            resultList: homeCubit.popList)));
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Container(
+                                  height: 25,
+                                  width: 80,
+                                  decoration: const BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: const Center(
+                                    child: Text(" See All",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 0.48,
+                                        )),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           width: double.infinity,
@@ -155,14 +189,12 @@ class SearchScreen extends StatelessWidget {
                             child: BlocBuilder<SearchCubit, SearchState>(
                               builder: (context, state) {
                                 return ListView.builder(
-                                        physics: const BouncingScrollPhysics(),
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) =>
-                                            SearchItem(
-                                                searchResult:
-                                                    homeCubit.popList[index]),
-                                        itemCount: homeCubit.popList.length,
-                                      );
+                                  physics: const BouncingScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) => SearchItem(
+                                      searchResult: homeCubit.popList[index]),
+                                  itemCount: homeCubit.popList.length,
+                                );
                               },
                             ),
                           ),

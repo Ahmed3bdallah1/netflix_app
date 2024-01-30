@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/home/presentation/managers/home_cubit.dart';
 import 'package:movies_app/features/home/presentation/managers/home_state.dart';
+import 'package:movies_app/features/home/presentation/view/screens/see_all_screen.dart';
 import 'package:movies_app/features/home/presentation/view/widgets/popular_banner.dart';
 import 'package:movies_app/features/home/presentation/view/widgets/top_rated_item.dart';
 import 'package:movies_app/features/home/presentation/view/widgets/upcoming_item.dart';
@@ -52,7 +53,12 @@ class HomeScreen extends StatelessWidget {
                         )),
                     InkWell(
                       onTap: () {
-                        // Navigator.pushNamed(context, Routes.home);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => SeeAllScreen(
+                                    title: "Up coming",
+                                    resultList: cubit.upComingList)));
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -101,7 +107,12 @@ class HomeScreen extends StatelessWidget {
                         )),
                     InkWell(
                       onTap: () {
-                        // Navigator.pushNamed(context, Routes.topRated);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => SeeAllScreen(
+                                    title: "Top Rated",
+                                    resultList: cubit.topRatedList)));
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
