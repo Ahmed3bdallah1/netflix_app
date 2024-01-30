@@ -11,6 +11,7 @@ import '../../../../saved/presentation/managers/save_state.dart';
 
 class SeeAllItem extends StatelessWidget {
   final Result result;
+
   const SeeAllItem({super.key, required this.result});
 
   @override
@@ -47,14 +48,14 @@ class SeeAllItem extends StatelessWidget {
                           width: double.infinity,
                           child: CachedNetworkImage(
                             imageUrl:
-                            "${ApiConstants.coverImageUrl}${result.posterPath}",
+                                "${ApiConstants.coverImageUrl}${result.posterPath}",
                             progressIndicatorBuilder:
                                 (context, url, downloadProgress) =>
-                            const Center(
+                                    const Center(
                               child: CircularProgressIndicator(),
                             ),
                             errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ),
                         Positioned(
@@ -65,26 +66,26 @@ class SeeAllItem extends StatelessWidget {
                             builder: (context, state) {
                               SaveCubit cubit = SaveCubit.get(context);
                               return cubit.isResultSaved(
-                                  resultId: result.id ?? 0) ==
-                                  true
+                                          resultId: result.id ?? 0) ==
+                                      true
                                   ? IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.bookmark_added_rounded,
-                                  color: Colors.blue,
-                                  size: 50,
-                                ),
-                              )
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.bookmark_added_rounded,
+                                        color: Colors.blue,
+                                        size: 50,
+                                      ),
+                                    )
                                   : IconButton(
-                                  onPressed: () {
-                                    showSnakBar(context,
-                                        "${result.title} added to the saved screen");
-                                    cubit.toSave(result: result);
-                                  },
-                                  icon: const Icon(
-                                    Icons.bookmark_add,
-                                    size: 50,
-                                  ));
+                                      onPressed: () {
+                                        showSnakBar(context,
+                                            "${result.title} added to the saved screen");
+                                        cubit.toSave(result: result);
+                                      },
+                                      icon: const Icon(
+                                        Icons.bookmark_add,
+                                        size: 50,
+                                      ));
                             },
                           ),
                         ),
@@ -94,7 +95,7 @@ class SeeAllItem extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(result.title ?? "Unknown",
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis),
                     ),
@@ -103,7 +104,7 @@ class SeeAllItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 8,bottom: 4),
+                          padding: const EdgeInsets.only(top: 8, bottom: 4),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -114,8 +115,7 @@ class SeeAllItem extends StatelessWidget {
                               ),
                               const SizedBox(width: 10),
                               Text(
-                                "${result.voteAverage}"
-                                    .substring(0, 3),
+                                "${result.voteAverage}".substring(0, 3),
                                 style: const TextStyle(fontSize: 16),
                               )
                             ],
@@ -124,9 +124,7 @@ class SeeAllItem extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                                "${result.releaseDate}"
-                                    .substring(2, 10),
+                            Text("${result.releaseDate}".substring(2, 10),
                                 style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,

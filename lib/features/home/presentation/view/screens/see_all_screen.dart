@@ -14,7 +14,8 @@ class SeeAllScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 10,childAspectRatio: .8),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisSpacing: 10, childAspectRatio: .7),
         itemCount: resultList.length,
         itemBuilder: (context, index) {
           return SeeAllItem(result: resultList[index]);
