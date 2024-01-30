@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/Models/home/poplar_model.dart';
-import 'package:movies_app/Models/home/top_rated_model.dart';
-import 'package:movies_app/Models/home/upcoming_model.dart';
 import 'package:movies_app/Models/saved/saved_model.dart';
 import 'package:movies_app/features/home/data/repos/home_repos_imp.dart';
 import 'package:movies_app/features/home/presentation/view/screens/home_screen.dart';
@@ -30,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
     SizedBox(),
   ];
 
-  List<PoplarResult> popList = [];
+  List<Result> popList = [];
   List<Result> upComingList = [];
   List<Result> topRatedList = [];
 

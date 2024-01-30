@@ -21,7 +21,7 @@ class PopularBanner extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => DetailsScreen(id:e.id)));
+                          builder: (_) => DetailsScreen(id: e.id!)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -54,7 +54,7 @@ class PopularBanner extends StatelessWidget {
                                     left: Radius.circular(20),
                                     right: Radius.circular(20))),
                             child: Text(
-                              e.title,
+                              e.title!,
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
