@@ -15,3 +15,8 @@ Netflix clone app.
 ⚫ Interceptor: Added Custom Dio interceptors to watch the request types and the response.
 
 
+https://github.com/Ahmed3bdallah1/netflix_app/assets/122252444/79c4cb21-866a-42f9-acf4-43a9dd00ce52
+
+
+
+
