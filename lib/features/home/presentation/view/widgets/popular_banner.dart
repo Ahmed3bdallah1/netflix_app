@@ -70,20 +70,18 @@ class PopularBanner extends StatelessWidget {
             )
             .toList(),
         options: CarouselOptions(
-          enlargeStrategy: CenterPageEnlargeStrategy.height,
-          height: 200,
-          aspectRatio: 20 / 5,
-          viewportFraction: 1.0,
-          initialPage: 0,
-          enableInfiniteScroll: true,
-          reverse: false,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 1),
-          autoPlayAnimationDuration: const Duration(seconds: 4),
-          autoPlayCurve: Curves.linear,
-          enlargeCenterPage: true,
-          enlargeFactor: 0.4,
-          scrollDirection: Axis.horizontal,
-        ));
+            enlargeStrategy: CenterPageEnlargeStrategy.height,
+            height: 200,
+            aspectRatio: 20 / 5,
+            viewportFraction: 0.9,
+            enlargeCenterPage: true,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlay: true,
+            autoPlayAnimationDuration: const Duration(seconds: 1),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            scrollDirection: Axis.horizontal,
+            pageSnapping: true));
   }
 }

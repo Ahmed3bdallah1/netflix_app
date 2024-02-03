@@ -51,7 +51,7 @@ class SavedScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: SizedBox(
-                        height: height*.58,
+                        height: height*.48,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
