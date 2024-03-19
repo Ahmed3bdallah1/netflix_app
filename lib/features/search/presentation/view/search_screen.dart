@@ -99,7 +99,7 @@ class SearchScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 30),
                     child: SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.58,
+                      height: MediaQuery.of(context).size.height * 0.5,
                       child: BlocBuilder<SearchCubit, SearchState>(
                         builder: (context, state) {
                           if (state is SearchInitialState) {

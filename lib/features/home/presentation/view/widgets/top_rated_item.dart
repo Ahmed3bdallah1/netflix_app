@@ -47,7 +47,7 @@ class TopRatedItem extends StatelessWidget {
                         alignment: Alignment.bottomCenter,
                         children: [
                           SizedBox(
-                            height: 250,
+                            height: 240,
                             width: double.infinity,
                             child: CachedNetworkImage(
                               imageUrl:
